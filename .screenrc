@@ -1,0 +1,17 @@
+# escape config
+escape ^t^t
+
+# no message
+startup_message off
+
+# auto detatch
+autodetach on
+
+# no visial bellmessage
+vbell off
+
+# tab setting
+hardstatus alwayslastline " %`%-w%{=b bw}%n %t%{-}%+w %= %m/%d %02c "
+
+# color setting
+#sorendition "+rb .G"
