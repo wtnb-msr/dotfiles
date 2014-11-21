@@ -10,7 +10,7 @@ fi
 
 echo $LINK_DIR
 
-for dotfile in $(cat dotfiles); do
+for dotfile in $(cat link_list); do
 
   LINK_FROM=${LINK_DIR}/${dotfile}
   LINK_TO=${APP_DIR}/${dotfile}

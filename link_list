@@ -1,0 +1,9 @@
+.bashrc
+.zshrc
+.screenrc
+.tmux.conf
+.vimrc
+.zsh.d
+.zsh.d/zsh_alias
+.zsh.d/zsh_config
+.zsh.d/zsh_notify
