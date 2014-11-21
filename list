@@ -1,9 +1,18 @@
-.bashrc
-.zshrc
+# screen
 .screenrc
+
+# tmux
 .tmux.conf
+
+# vim
 .vimrc
-.zsh.d
+
+# zsh
+.zshrc
 .zsh.d/zsh_alias
 .zsh.d/zsh_config
 .zsh.d/zsh_notify
+
+# bash
+.bashrc
+
