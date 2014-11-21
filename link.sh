@@ -21,7 +21,7 @@ for dotfile in ${LIST}; do
   fi
 
   # ディレクトリの作成
-  mkdir -p $(dirname ${LINK_TO})
+  mkdir -p $(dirname ${LINK_FROM})
 
   # リンクがない or 差分がないがない場合、リンクで上書き
   if [ ! -e ${LINK_FROM} ] || [ "$(diff ${LINK_FROM} ${LINK_TO})" = "" ]; then
