@@ -1,0 +1,21 @@
+[core]
+  excludesfile = ~/.gitignore
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  filemode = true
+  path =
+[alias]
+  co = checkout
+  st = status
+  ci = commit
+  di = diff
+  br = branch
+  tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
+  skip = update-index --skip-worktree
+  no-skip = update-index --no-skip-worktree
+  ignore = update-index --assume-unchanged
+  no-ignore = update-index --no-assume-unchanged
+[include]
+  path = ~/.gitconfig.local
+[color]
+  ui = true
+  diff = true

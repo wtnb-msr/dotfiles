@@ -24,7 +24,7 @@ for dotfile in ${LIST}; do
   mkdir -p $(dirname ${LINK_TO})
 
   # リンクがない or 差分がないがない場合、リンクで上書き
-  if [ ! -e ${LINK_FROM} -o "$(diff ${LINK_FROM} ${LINK_TO})" = "" ]; then
+  if [ ! -e ${LINK_FROM} ] || [ "$(diff ${LINK_FROM} ${LINK_TO})" = "" ]; then
     ln -fs ${LINK_TO} ${LINK_FROM}
     echo "${dotfile} is linked."
     continue
