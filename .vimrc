@@ -63,12 +63,13 @@ set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 " タブ幅の設定
+syntax on
 au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2
 au BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2
 au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 softtabstop=2
 au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2
 au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 softtabstop=2
-au BufNewFile,BufRead *.py set tabstop=1 shiftwidth=1 softtabstop=1
+au BufNewFile,BufRead *.py set tabstop=2 shiftwidth=2 softtabstop=2
 
 " マウスの入力を受け付ける
 if has('mouse')
@@ -78,7 +79,7 @@ endif
 " ビジュアルモードでクリップボードを共有
 set clipboard+=autoselect
 " ヤンクでクリップボードを共有
-set clipboard+=unnamed         
+set clipboard+=unnamed
 
 " コマンドラインモードでTABキーによるファイル名補完を有効にする
 set wildmenu wildmode=list:longest,full
@@ -111,14 +112,14 @@ endif
 " originalrepos on github
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc'
-""NeoBundle 'VimClojure'
+"NeoBundle 'VimClojure'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 
 " 補完
 NeoBundle 'Shougo/neocomplete'
   let g:neocomplete#enable_at_startup = 1
-    
+
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "Shougo/neosnippet-snippets"
   " Plugin key-mappings.
@@ -158,13 +159,13 @@ NeoBundle 'scrooloose/nerdtree'
 " シンタックスチェック
 "NeoBundle 'scrooloose/syntastic'
 
-" emmet 
+" emmet
 NeoBundle 'mattn/emmet-vim'
   let g:user_emmet_settings = {
   \   'lang' : 'ja'
   \ }
-  
-" quick run 
+
+" quick run
 NeoBundle 'thinca/vim-quickrun'
 
 ""NeoBundle 'jpalardy/vim-slime'
@@ -195,14 +196,14 @@ endif
 " Installation check.
 NeoBundleCheck
 
-"-------------------------------------------------------------------------------"
-" Mapping
-"-------------------------------------------------------------------------------"
-" コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
-" map /noremap           @            -              -                  @
-" nmap / nnoremap        @            -              -                  -
-" imap / inoremap        -            @              -                  -
-" cmap / cnoremap        -            -              @                  -
-" vmap / vnoremap        -            -              -                  @
-" map! / noremap!        -            @              @                  -
-"-------------------------------------------------------------------------------"
+""-------------------------------------------------------------------------------"
+"" Mapping
+""-------------------------------------------------------------------------------"
+"" コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
+"" map /noremap           @            -              -                  @
+"" nmap / nnoremap        @            -              -                  -
+"" imap / inoremap        -            @              -                  -
+"" cmap / cnoremap        -            -              @                  -
+"" vmap / vnoremap        -            -              -                  @
+"" map! / noremap!        -            @              @                  -
+""-------------------------------------------------------------------------------"

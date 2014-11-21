@@ -12,6 +12,7 @@ vbell off
 
 # tab setting
 hardstatus alwayslastline " %`%-w%{=b bw}%n %t%{-}%+w %= %m/%d %02c "
+#hardstatus alwayslastline "%{= wg} %-w%{=bu dr}%n %t%{-}%+w %= %{=b kw} %Y/%m/%d %02c"
 
 # color setting
 #sorendition "+rb .G"
