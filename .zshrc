@@ -11,9 +11,6 @@ load ${ZSHDIR}/zsh_alias
 load ${ZSHDIR}/zsh_config
 load ${ZSHDIR}/zsh_notify
 
-# .zshrc
-eval "$(rbenv init - zsh)"
-
 ########################################
 # 補完
 # 補完機能を有効にする
@@ -114,14 +111,14 @@ fi
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
-    darwin*)
-        #Mac用の設定
-        export CLICOLOR=1
-        alias ls='ls -G -F'
-        ;;
-    linux*)
-        #Linux用の設定
-        ;;
+  darwin*)
+    #Mac用の設定
+    export CLICOLOR=1
+    alias ls='ls -G -F'
+    ;;
+  linux*)
+    #Linux用の設定
+    ;;
 esac
 
 # vim:set ft=zsh:
@@ -141,7 +138,7 @@ export PATH=$HOME/.cabal/bin:$PATH
 export PATH=/Applications/Vagrant/bin:$PATH
 
 # Ruby environment
-export PATH=$HOME/.rbenv/bin:$PATH
+#export PATH=$HOME/.rbenv/bin:$PATH
 
 # Gem setting ローカル環境にインストール
 export GEM_HOME=~/Applications/extlib/gems
@@ -163,3 +160,15 @@ export ANT_OPTS=-Dfile.encoding=UTF8
 
 # Applications/apps
 export PATH=${HOME}/Applications/apps:${PATH}
+
+# rbenv
+export RBENV_ROOT=${HOME}/.rbenv
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+# docker
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/a13613/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
