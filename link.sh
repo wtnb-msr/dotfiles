@@ -12,7 +12,7 @@ fi
 for dotfile in ${LIST}; do
 
   LINK_FROM=${LINK_DIR}/${dotfile}
-  LINK_TO=${APP_DIR}/${dotfile}
+  LINK_TO=${APP_DIR}/home/${dotfile}
 
   # 不正なファイル
   if [ ! -e ${LINK_TO} ]; then
