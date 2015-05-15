@@ -1,12 +1,51 @@
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=/Users/a13613/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/Users/a13613/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'flazz/vim-colorschemes'
+
+" You can specify revision/branch/tag.
+NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+
 " vi 非互換
 set nocompatible
 
 " vim を使ってくれてありがとう
 set notitle
 
-" 起動時に有効化されていた検出方法を無効化する
-filetype off
-filetype plugin indent off
+"" 起動時に有効化されていた検出方法を無効化する
+"filetype off
+"filetype plugin indent off
 
 " 画面表示の設定
 set number         " 行番号を表示する
@@ -62,19 +101,19 @@ set softtabstop=2 " 連続した空白に対してタブキーやバックスペ
 set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
-" タブ幅の設定
-syntax on
-au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2
-au BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2
-au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 softtabstop=2
-au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2
-au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 softtabstop=2
-au BufNewFile,BufRead *.py set tabstop=2 shiftwidth=2 softtabstop=2
+"" タブ幅の設定
+"syntax on
+"au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2
+"au BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2
+"au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 softtabstop=2
+"au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2
+"au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 softtabstop=2
+"au BufNewFile,BufRead *.py set tabstop=2 shiftwidth=2 softtabstop=2
 
-" マウスの入力を受け付ける
-if has('mouse')
-  set mouse=a
-endif
+"" マウスの入力を受け付ける
+"if has('mouse')
+"  set mouse=a
+"endif
 
 " ビジュアルモードでクリップボードを共有
 set clipboard+=autoselect
@@ -104,106 +143,103 @@ autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
 autocmd BufWritePre * :%s/\t/  /ge
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
-endif
 
-" originalrepos on github
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
-"NeoBundle 'VimClojure'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/unite.vim'
 
-" 補完
-NeoBundle 'Shougo/neocomplete'
-  let g:neocomplete#enable_at_startup = 1
-
-NeoBundle 'Shougo/neosnippet'
-NeoBundle "Shougo/neosnippet-snippets"
-  " Plugin key-mappings.
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-  " SuperTab like snippets behavior.
-  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-              \ "\<Plug>(neosnippet_expand_or_jump)"
-              \: pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-              \ "\<Plug>(neosnippet_expand_or_jump)"
-              \: "\<TAB>"
-
-  " For snippet_complete marker.
-  if has('conceal')
-      set conceallevel=2 concealcursor=i
-  endif
-
-" ツリー型エクスプローラ
-NeoBundle 'scrooloose/nerdtree'
-  "autocmd vimenter * NERDTree
-  nmap <silent> <C-e>      :NERDTreeToggle<CR>
-  vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-  omap <silent> <C-e>      :NERDTreeToggle<CR>
-  imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
-  cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
-
-" バッファタブ管理
-"NeoBundle 'fholgado/minibufexpl.vim'
-"  noremap <C-H> <C-W>h
-"  noremap <C-J> <C-W>j
-  "noremap <C-K> <C-W>k
-  "noremap <C-L> <C-W>l
-
-" シンタックスチェック
-"NeoBundle 'scrooloose/syntastic'
-
-" emmet
-NeoBundle 'mattn/emmet-vim'
-  let g:user_emmet_settings = {
-  \   'lang' : 'ja'
-  \ }
-
-" quick run
-NeoBundle 'thinca/vim-quickrun'
-
-""NeoBundle 'jpalardy/vim-slime'
-""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-
-NeoBundle 'haya14busa/vim-migemo'
-
-" f の検索移動を拡張. 'f' + char + 'f'
-NeoBundle 'rhysd/clever-f.vim'
-
-" Easymotion
-NeoBundle 'Lokaltog/vim-easymotion'
-  map <Leader> <Plug>(easymotion-prefix)
-
-" required for neobundle
-filetype plugin indent on
-
-if has("autocmd")
-  " ファイルタイプ別インデント、プラグインを有効にする
-  filetype plugin indent on
-  " カーソル位置を記憶する
-  autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
-endif
-
-" Installation check.
-NeoBundleCheck
-
-""-------------------------------------------------------------------------------"
-"" Mapping
-""-------------------------------------------------------------------------------"
-"" コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
-"" map /noremap           @            -              -                  @
-"" nmap / nnoremap        @            -              -                  -
-"" imap / inoremap        -            @              -                  -
-"" cmap / cnoremap        -            -              @                  -
-"" vmap / vnoremap        -            -              -                  @
-"" map! / noremap!        -            @              @                  -
-""-------------------------------------------------------------------------------"
+"" originalrepos on github
+"NeoBundle 'Shougo/neobundle.vim'
+"NeoBundle 'Shougo/vimproc'
+""NeoBundle 'VimClojure'
+"NeoBundle 'Shougo/vimshell'
+"NeoBundle 'Shougo/unite.vim'
+"
+"" 補完
+"NeoBundle 'Shougo/neocomplete'
+"  let g:neocomplete#enable_at_startup = 1
+"
+"NeoBundle 'Shougo/neosnippet'
+"NeoBundle "Shougo/neosnippet-snippets"
+"  " Plugin key-mappings.
+"  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"  xmap <C-k>     <Plug>(neosnippet_expand_target)
+"
+"  " SuperTab like snippets behavior.
+"  imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"              \ "\<Plug>(neosnippet_expand_or_jump)"
+"              \: pumvisible() ? "\<C-n>" : "\<TAB>"
+"  smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+"              \ "\<Plug>(neosnippet_expand_or_jump)"
+"              \: "\<TAB>"
+"
+"  " For snippet_complete marker.
+"  if has('conceal')
+"      set conceallevel=2 concealcursor=i
+"  endif
+"
+"" ツリー型エクスプローラ
+"NeoBundle 'scrooloose/nerdtree'
+"  "autocmd vimenter * NERDTree
+"  nmap <silent> <C-e>      :NERDTreeToggle<CR>
+"  vmap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+"  omap <silent> <C-e>      :NERDTreeToggle<CR>
+"  imap <silent> <C-e> <Esc>:NERDTreeToggle<CR>
+"  cmap <silent> <C-e> <C-u>:NERDTreeToggle<CR>
+"
+"" バッファタブ管理
+""NeoBundle 'fholgado/minibufexpl.vim'
+""  noremap <C-H> <C-W>h
+""  noremap <C-J> <C-W>j
+"  "noremap <C-K> <C-W>k
+"  "noremap <C-L> <C-W>l
+"
+"" シンタックスチェック
+""NeoBundle 'scrooloose/syntastic'
+"
+"" emmet
+"NeoBundle 'mattn/emmet-vim'
+"  let g:user_emmet_settings = {
+"  \   'lang' : 'ja'
+"  \ }
+"
+"" quick run
+"NeoBundle 'thinca/vim-quickrun'
+"
+"""NeoBundle 'jpalardy/vim-slime'
+"""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+"
+"NeoBundle 'haya14busa/vim-migemo'
+"
+"" f の検索移動を拡張. 'f' + char + 'f'
+"NeoBundle 'rhysd/clever-f.vim'
+"
+"" Easymotion
+"NeoBundle 'Lokaltog/vim-easymotion'
+"  map <Leader> <Plug>(easymotion-prefix)
+"
+"" required for neobundle
+"filetype plugin indent on
+"
+"if has("autocmd")
+"  " ファイルタイプ別インデント、プラグインを有効にする
+"  filetype plugin indent on
+"  " カーソル位置を記憶する
+"  autocmd BufReadPost *
+"    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"  \   exe "normal g`\"" |
+"  \ endif
+"endif
+"
+"" Installation check.
+"NeoBundleCheck
+"
+"""-------------------------------------------------------------------------------"
+""" Mapping
+"""-------------------------------------------------------------------------------"
+""" コマンド       ノーマルモード 挿入モード コマンドラインモード ビジュアルモード
+""" map /noremap           @            -              -                  @
+""" nmap / nnoremap        @            -              -                  -
+""" imap / inoremap        -            @              -                  -
+""" cmap / cnoremap        -            -              @                  -
+""" vmap / vnoremap        -            -              -                  @
+""" map! / noremap!        -            @              @                  -
+"""-------------------------------------------------------------------------------"
