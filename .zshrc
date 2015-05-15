@@ -164,11 +164,19 @@ export PATH=${HOME}/Applications/apps:${PATH}
 # rbenv
 export RBENV_ROOT=${HOME}/.rbenv
 if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
+  eval "$(rbenv init - zsh)"
 fi
 
 # docker
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/a13613/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+
+### Virtualenvwrapper
+#if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+#  export WORKON_HOME=$HOME/.virtualenvs
+#  source /usr/local/bin/virtualenvwrapper.sh
+#fi
+
+#fpath=(~/.zsh $fpath)
 

@@ -4,18 +4,20 @@
   filemode = true
   path =
 [alias]
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
   co = checkout
   st = status
+  s = status --short --branch
   ci = commit
-  di = diff
+  diffc = diff --cached
   br = branch
   tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
-  skip = update-index --skip-worktree
-  no-skip = update-index --no-skip-worktree
-  ignore = update-index --assume-unchanged
-  no-ignore = update-index --no-assume-unchanged
+  info = remote show origin
+  ignore = ! echo >> .git/info/exclude
 [include]
   path = ~/.gitconfig.local
 [color]
-  ui = true
-  diff = true
+  ui = auto
+  diff = auto
+[push]
+	default = simple
