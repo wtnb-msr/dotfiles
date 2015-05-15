@@ -23,7 +23,7 @@ for dotfile in ${LIST}; do
   # ディレクトリの作成
   mkdir -p $(dirname ${LINK_FROM})
 
-  # リンクがない or 差分がないがない場合、リンクで上書き
+  # リンクがない or 差分がない場合、リンクで上書き
   if [ ! -e ${LINK_FROM} ] || [ "$(diff ${LINK_FROM} ${LINK_TO})" = "" ]; then
     ln -fs ${LINK_TO} ${LINK_FROM}
     echo "${dotfile} is linked."
