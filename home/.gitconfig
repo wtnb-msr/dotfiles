@@ -14,6 +14,7 @@
   tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'
   info = remote show origin
   ignore = ! echo >> .git/info/exclude
+  pr = pull-request
 [include]
   path = ~/.gitconfig.local
 [color]

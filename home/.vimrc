@@ -1,47 +1,79 @@
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=/Users/a13613/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('/Users/a13613/.vim/bundle'))
+set runtimepath+=/Users/a13613/.vim/dein/repos/github.com/Shougo/dein.vim
 
-" Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call dein#begin('/Users/a13613/.vim/dein')
 
-" Add or remove your Bundles here:
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
 
 " You can specify revision/branch/tag.
-NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
 " Required:
-call neobundle#end()
+call dein#end()
 
 " Required:
 filetype plugin indent on
+syntax enable
 
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
 
+""NeoBundle Scripts-----------------------------
+"if has('vim_starting')
+"  if &compatible
+"    set nocompatible               " Be iMproved
+"  endif
+"
+"  " Required:
+"  set runtimepath+=/Users/a13613/.vim/bundle/neobundle.vim/
+"endif
+"
+"" Required:
+"call neobundle#begin(expand('/Users/a13613/.vim/bundle'))
+"
+"" Let NeoBundle manage NeoBundle
+"" Required:
+"NeoBundleFetch 'Shougo/neobundle.vim'
+"
+"" Add or remove your Bundles here:
+"NeoBundle 'Shougo/neosnippet.vim'
+"NeoBundle 'Shougo/neosnippet-snippets'
+"NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'ctrlpvim/ctrlp.vim'
+"NeoBundle 'flazz/vim-colorschemes'
+"
+"" You can specify revision/branch/tag.
+"NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+"
+"" Required:
+"call neobundle#end()
+"
+"" Required:
+"filetype plugin indent on
+"
+"" If there are uninstalled bundles found on startup,
+"" this will conveniently prompt you to install them.
+"NeoBundleCheck
+""End NeoBundle Scripts-------------------------
 
 " vi 非互換
-set nocompatible
+"set nocompatible
 
 " vim を使ってくれてありがとう
-set notitle
+"set notitle
 
 "" 起動時に有効化されていた検出方法を無効化する
 "filetype off
@@ -102,18 +134,17 @@ set autoindent    " 改行時に前の行のインデントを継続する
 set smartindent   " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 
 "" タブ幅の設定
-"syntax on
-"au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2
-"au BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2
-"au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 softtabstop=2
-"au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2
-"au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 softtabstop=2
-"au BufNewFile,BufRead *.py set tabstop=2 shiftwidth=2 softtabstop=2
+syntax on
+au BufNewFile,BufRead *.html set tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufRead *.css set tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufRead *.scss set tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2 softtabstop=2
 
 "" マウスの入力を受け付ける
-"if has('mouse')
-"  set mouse=a
-"endif
+if has('mouse')
+  set mouse=a
+endif
 
 " ビジュアルモードでクリップボードを共有
 set clipboard+=autoselect
@@ -216,19 +247,19 @@ autocmd BufWritePre * :%s/\s\+$//ge
 "NeoBundle 'Lokaltog/vim-easymotion'
 "  map <Leader> <Plug>(easymotion-prefix)
 "
-"" required for neobundle
-"filetype plugin indent on
-"
-"if has("autocmd")
-"  " ファイルタイプ別インデント、プラグインを有効にする
-"  filetype plugin indent on
-"  " カーソル位置を記憶する
-"  autocmd BufReadPost *
-"    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"  \   exe "normal g`\"" |
-"  \ endif
-"endif
-"
+" required for neobundle
+filetype plugin indent on
+
+if has("autocmd")
+  " ファイルタイプ別インデント、プラグインを有効にする
+  filetype plugin indent on
+  " カーソル位置を記憶する
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+endif
+
 "" Installation check.
 "NeoBundleCheck
 "
@@ -243,3 +274,7 @@ autocmd BufWritePre * :%s/\s\+$//ge
 """ vmap / vnoremap        -            -              -                  @
 """ map! / noremap!        -            @              @                  -
 """-------------------------------------------------------------------------------"
+
+autocmd BufNewFile *.py 0r $HOME/.vim/template/py.txt
+autocmd BufNewFile *.sh 0r $HOME/.vim/template/sh.txt
+
