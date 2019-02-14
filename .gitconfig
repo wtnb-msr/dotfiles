@@ -15,6 +15,7 @@
   info = remote show origin
   ignore = ! echo >> .git/info/exclude
   pr = pull-request
+  sync = ! git pull --rebase upstream master && git push origin master && git gc
 [include]
   path = ~/.gitconfig.local
 [color]
