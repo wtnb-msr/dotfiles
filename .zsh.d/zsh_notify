@@ -1,4 +1,0 @@
-# 通知センターの設定
-source ~/.zsh.d/zsh-notify/notify.plugin.zsh
-export SYS_NOTIFIER="/usr/local/bin/terminal-notifier"
-
