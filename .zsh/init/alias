@@ -5,10 +5,10 @@ alias less='less -M'
 
 #alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 #alias vi='env LANG=ja_JP.UTF-8 /usr/local/Cellar/vim/7.4.430_1/bin/vim "$@"'
-alias vi='env LANG=ja_JP.UTF-8 vim "$@"'
+#alias vi='env LANG=ja_JP.UTF-8 vim "$@"'
 
 alias mkdir='mkdir -p'
 
-alias ze='vi ~/.zshrc && source ~/.zshrc'
-alias ve='vi ~/.vimrc'
+#alias ze='vi ~/.zshrc && source ~/.zshrc'
+#alias ve='vi ~/.vimrc'
 

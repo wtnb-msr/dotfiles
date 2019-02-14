@@ -10,8 +10,8 @@ for dotfile in .??* ; do
     ".git" | ".DS_Store" ) continue;;
   esac
 
-  echo ln -sf ${dir}/${dotfile} ${HOME}/${dotfile}
-  ln -sf ${dir}/${dotfile} ${HOME}/${dotfile}
+  echo ln -fns ${dir}/${dotfile} ${HOME}/${dotfile}
+  ln -fns ${dir}/${dotfile} ${HOME}/${dotfile}
 
 done
 
