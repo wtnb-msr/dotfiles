@@ -12,3 +12,7 @@ alias mkdir='mkdir -p'
 #alias ze='vi ~/.zshrc && source ~/.zshrc'
 #alias ve='vi ~/.vimrc'
 
+alias gconf='gcloud config configurations'
+
+alias kc='kubectl'
+alias kx='kubectx'
