@@ -5,3 +5,4 @@ done
 for rc in ${HOME}/.zsh/opt/*; do
   source ${rc}
 done
+
