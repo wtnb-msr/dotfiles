@@ -11,5 +11,5 @@ if [ -n "$sidebar_id" ]; then
 else
   # Clear disabled flag and create sidebar
   tmux set -wu @sidebar_disabled
-  tmux split-window -hbd -l 30 "$HOME/.tmux-scripts/sidebar.sh"
+  tmux split-window -hbd -l 35 "$HOME/.tmux-scripts/sidebar.sh"
 fi

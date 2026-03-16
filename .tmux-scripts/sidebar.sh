@@ -54,18 +54,24 @@ while true; do
     printf '\033[K\n'
 
     tmux list-sessions -F '#{session_name}' 2>/dev/null | sort | while read -r sess; do
+      # Only show sessions that have at least one claude pane
+      tmux list-panes -s -t "$sess" -F '#{pane_current_command}' 2>/dev/null | grep -q '^claude$' || continue
+
       if [ "$sess" = "$cur_sess" ]; then
-        printf '\033[1;32m▶ %s\033[0m\033[K\n' "$sess"
+        printf '\033[1;32m▶%s\033[0m\033[K\n' "$sess"
       else
-        printf '  \033[2m%s\033[0m\033[K\n' "$sess"
+        printf ' \033[2m%s\033[0m\033[K\n' "$sess"
       fi
 
       tmux list-windows -t "$sess" -F '#{window_index}|#{window_name}|#{window_active}' 2>/dev/null | \
       while IFS='|' read -r widx wname wactive; do
+        # Only show windows that have at least one claude pane
+        tmux list-panes -t "${sess}:${widx}" -F '#{pane_current_command}' 2>/dev/null | grep -q '^claude$' || continue
+
         if [ "$sess" = "$cur_sess" ] && [ "$wactive" = "1" ]; then
-          printf '    \033[1;33m%s: %s *\033[0m\033[K\n' "$widx" "$wname"
+          printf '  \033[1;33m%s:%s *\033[0m\033[K\n' "$widx" "$wname"
         else
-          printf '    %s: %s\033[K\n' "$widx" "$wname"
+          printf '  %s:%s\033[K\n' "$widx" "$wname"
         fi
 
         tmux list-panes -t "${sess}:${widx}" -F '#{pane_index}|#{pane_current_command}|#{pane_active}|#{pane_title}|#{pane_id}' 2>/dev/null | \
@@ -82,22 +88,23 @@ while true; do
               wait) state_tag='\033[35m wait\033[0m' ;;
               *)    state_tag='\033[32m idle\033[0m' ;;
             esac
+            pdir=$(tmux display-message -t "$pid" -p '#{pane_current_path}' 2>/dev/null)
+            plabel=$(basename "$pdir" 2>/dev/null || echo 'claude')
 
             if [ "$is_active" = "1" ]; then
-              printf '       \033[1;36m·\033[0m claude%b ◀\033[K\n' "$state_tag"
+              printf '    \033[1;36m·\033[0m %s%b ◀\033[K\n' "$plabel" "$state_tag"
             else
-              printf '       · claude%b\033[K\n' "$state_tag"
+              printf '    · %s%b\033[K\n' "$plabel" "$state_tag"
             fi
           else
             if [ "$is_active" = "1" ]; then
-              printf '       \033[1;36m· %s ◀\033[0m\033[K\n' "$pcmd"
+              printf '    \033[1;36m· %s ◀\033[0m\033[K\n' "$pcmd"
             else
-              printf '       \033[2m· %s\033[0m\033[K\n' "$pcmd"
+              printf '    \033[2m· %s\033[0m\033[K\n' "$pcmd"
             fi
           fi
         done
       done
-      printf '\033[K\n'
     done
 
     printf '\033[2mC-t T: close\033[0m\033[K\n'
@@ -107,5 +114,5 @@ while true; do
   # Single atomic write to terminal
   cat "$tmpfile"
 
-  sleep 1
+  sleep 0.5
 done
